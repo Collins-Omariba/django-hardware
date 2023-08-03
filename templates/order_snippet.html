@@ -10,7 +10,7 @@
         <h6 class="my-0">{{ order_item.quantity }} x {{ order_item.item.title}}</h6>
         <small class="text-muted">{{ order_item.item.description}}</small>
         </div>
-        <span class="text-muted">${{ order_item.get_final_price }}</span>
+        <span class="text-muted">KES {{ order_item.get_final_price }}</span>
     </li>
     {% endfor %}
     {% if order.coupon %}
@@ -29,7 +29,7 @@
     </ul>
 
     {% if DISPLAY_COUPON_FORM %}
-    <form class="card p-2" action="{% url 'core:add-coupon' %}" method="POST">
+    <!-- <form class="card p-2" action="{% url 'core:add-coupon' %}" method="POST">
         {% csrf_token %}
         <div class="input-group">
             {{ couponform.code }}
@@ -37,7 +37,7 @@
             <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
             </div>
         </div>
-    </form>
+    </form> -->
     {% endif %}
 
 </div>
