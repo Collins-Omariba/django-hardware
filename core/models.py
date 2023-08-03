@@ -1,9 +1,17 @@
+from django.db.models.query import QuerySet
 from django.db.models.signals import post_save
 from django.conf import settings
 from django.db import models
 from django.db.models import Sum
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
+from django.contrib.auth.models import User
+
+
+# class UserOwnedManager(models.Manager):
+#     def get_queryset(self):
+#         user = User.objects.filter(is_staff=True)
+#         return super().get_queryset().filter(created_by=user)
 
 
 CATEGORY_CHOICES = (
@@ -34,9 +42,12 @@ class Item(models.Model):
     price = models.FloatField()
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField()
+    # objects = UserOwnedManager()
 
     def __str__(self):
         return self.title
