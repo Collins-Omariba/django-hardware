@@ -5,7 +5,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="/">
-        <strong class="blue-text">HardWare</strong>
+        <strong class="green-text">HardWare & Construction Equipment</strong>
       </a>
 
       <!-- Collapse -->
@@ -45,6 +45,17 @@
               <span class="clearfix d-none d-sm-inline-block"> Logout </span>
             </a>
           </li>
+
+          <!-- TODO !!!! -->
+          
+          <li class="nav-item">
+            <a href="{% url 'core:add_to_seller_group' %}" class="btn btn-success btn-md my-0 p">
+              Request to be a Seller
+            </a>
+            
+          </li>
+
+          
           {% else %}
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{% url 'account_login' %}">
