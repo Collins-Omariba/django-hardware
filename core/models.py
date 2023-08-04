@@ -8,12 +8,6 @@ from django_countries.fields import CountryField
 from django.contrib.auth.models import User
 
 
-# class UserOwnedManager(models.Manager):
-#     def get_queryset(self):
-#         user = User.objects.filter(is_staff=True)
-#         return super().get_queryset().filter(created_by=user)
-
-
 CATEGORY_CHOICES = (
     ('CM', 'Construction Materials'),
     ('T', 'Tools'),
@@ -44,10 +38,9 @@ class Item(models.Model):
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     description = models.TextField()
     image = models.ImageField()
-    # objects = UserOwnedManager()
 
     def __str__(self):
         return self.title
