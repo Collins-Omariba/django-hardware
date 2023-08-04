@@ -65,6 +65,11 @@ class ItemAdmin(admin.ModelAdmin):
             return qs
         return qs.filter(user=request.user)
 
+    fields = ('title', 'price', 'discount_price',
+              'category', 'slug', 'description', 'image')
+
+    exclude = ('user',)
+
 
 admin.site.register(Item, ItemAdmin)
 admin.site.register(OrderItem)
