@@ -7,13 +7,14 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, View
 from django.contrib.auth.models import Group, User
+from allauth.account.views import SignupView
 
-from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CustomSignupForm
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -529,3 +530,11 @@ def add_user_to_seller_group(request):
     seller_group = Group.objects.get(name='seller')
     request.user.groups.add(seller_group)
     return render(request, 'seller_group_added.html')
+
+
+class CustomSignupView(SignupView):
+    form_class = CustomSignupForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context

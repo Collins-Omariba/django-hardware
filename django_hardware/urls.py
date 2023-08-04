@@ -2,9 +2,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
+from core.views import CustomSignupView
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/signup/', CustomSignupView.as_view(), name='account_signup'),
     path('accounts/', include('allauth.urls')),
     path('', include('core.urls', namespace='core'))
 ]
