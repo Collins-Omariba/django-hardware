@@ -4,8 +4,8 @@ from decouple import config
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-SECRET_KEY = config('SECRET_KEY')
-
+# SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'j & @opl-2!cbun-v*1(dijw3_ ^ 9@$1s07($rjbiho2m9=4vf+qp'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
