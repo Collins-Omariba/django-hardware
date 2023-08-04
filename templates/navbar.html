@@ -47,14 +47,21 @@
           </li>
 
           <!-- TODO !!!! -->
-          
+          {% if request.user.is_staff %}
+          <li class="nav-item">
+            <a href="{% url 'admin:index' %}" class="btn btn-success btn-md my-0 p">
+              Post Item
+            </a>
+          </li>
+
+          {% else %}
+
           <li class="nav-item">
             <a href="{% url 'core:add_to_seller_group' %}" class="btn btn-success btn-md my-0 p">
               Request to be a Seller
             </a>
-            
           </li>
-
+          {% endif %}
           
           {% else %}
           <li class="nav-item">
