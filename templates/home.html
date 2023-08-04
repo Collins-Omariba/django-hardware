@@ -76,12 +76,18 @@
                 </a>
 
 
-                <h4 class="font-weight-bold blue-text">
-                  <strong>KES
+                <h4 class="font-weight-bold green-text ">
+                  <strong>
                   {% if item.discount_price %}
-                  {{ item.discount_price }}
+
+                  {{ item.title }}<br>
+                  KES {{ item.discount_price }}<br>
+                  
                   {% else %}
-                  {{ item.price }}
+
+                  {{ item.title }}<br>
+                  KES {{ item.price }}<br>
+                  
                   {% endif %}
                   </strong>
                 </h4>
